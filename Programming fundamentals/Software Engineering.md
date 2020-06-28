@@ -57,7 +57,8 @@
 				.price(500)
 				.buyer(user1)
 
-			assertTrue(service.buy(item1));  //<-- Only this line is the assertion.
+			assertTrue(service.buy(item1));  
+			//Only this line is the assertion.
 		}
 	}
 	```
@@ -79,4 +80,65 @@
 		It can be done manually using polymorphism. For example, you can substitute a class with its subclass, where you override parts to result the desired behaviour.
 	- ### TDD
 		![[TDD.png]]
-		Test-driven-development
+		Test-driven-development is a software development technique that heavily relies on tests, and using a very shortdevelopment cycle: requirements are turned into very specific test cases, the software is improved so that the tests pass, then the code is revised and refactored.
+		This is opposed to software development that allows software to be added that is not proven to meet requirements.
+		
+		Some of the __benefits__:
+		 - Writing the tests first requires you to really consider what do you want from the code.
+		 - You receive fast feedback.
+		 - TDD creates a detailed specification. 
+		 - You're forced to write small classes focused on one thing.
+
+	- ### Unit testing best practices
+		- **Isolated**: The tested unit if isolated from dependencies, like databases, or other classes. This way we can narrow down the tested subject, and tell more accurately where the problem lies.
+			Examples for isolating units: mocking dependencies, or initializing dependencies without the IoC container (if a DI framework is used).
+		- **Arrange, Act, Assert**: an advised pattern: arrange your objects, act on them, then assert their behaviour.
+		- **Write minimally passing tests**: The input to be used in a unit test should be the simplest possible in order to verify the behavior that you are currently testing.
+			This way tests become more resilient to future changes in the codebase.
+		- **Minimize logic in tests**: Less chance to introduce a bug.
+
+## DevOps
+- ### What is DevOps?
+	__Development and Operations__.
+	Typical tasks of a DevOps person is everything IT related except actually writing the software. 
+	In practice this means the following:
+
+	- Build systems that enable CI/CD workflows.
+	- Manage the "cloud", set up its infrastructure, security, install and configure apps.
+	- Make sure that there are monitoring and alerting systems in place in case of issues.
+	- Automate everything: deployments, releases, upgrades.
+	
+- ### Continuous integration
+	It means merging the changes back to the main branch as often as possible. The developer's changes are validated by __automated tests__.
+	Using CI you avoid the integration hell that usually happens when people wait for release day to merge their changes into the release branch.
+	This can be achieved using Jenkins, or Gitlab CI for example.
+	![[devops techniques.png]]
+	
+- ### Continuous delivery
+	Continuous integration + releasing new changes quickly. Release is automated, but deploy is still manual.
+	
+- ### Continuous deployment
+	One step further, even the deployment is automated.
+	
+## Software Methodologies
+- ### Software-lifecycle models
+	Agile, Waterfall.
+	
+- ### UML diagram, types
+	UML is a way of visualizing a software program using a collection of diagrams. 
+
+	Structural UML diagrams:
+	- Class diagram
+	- Package diagram
+	- Object diagram
+
+	Behavioral UML diagrams:
+	- Communication diagram
+	- Interaction overview diagram
+
+- ### Design pattern examples
+	- [[Guiding principles#What is Dependency Injection|Dependency Injection]]
+	- [[Guiding principles#What is the DAO Data Access Object pattern When and how to implement|Data access object]]
+	- [[General CS concepts#Iterator|Iterator pattern]]
+	- [[Observer design pattern]]
+	- [[Publisher-Subscriber design pattern]]

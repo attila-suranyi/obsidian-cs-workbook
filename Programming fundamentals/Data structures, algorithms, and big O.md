@@ -120,6 +120,28 @@
 	- adding a node or edge takes more time
 	- needs more memory because of all the redundant information 
 
+- ### Trees
+	- Trees are special kind of graphs with the following properties:
+		- they don't have cycles,
+		- and are connected (there is a path from each node to each node)
+		
+		![[tree.png]]
+	
+	- Properties:
+		- Each tree has a root node.
+		- The root node has zero or more child nodes.
+		- Each child node has zero or more child nodes.
+		- The node which doesn't have a child node called a *leaf*.
+
+	- #### Binary tree
+		- It is a tree in which each node has maximum two child nodes.
+
+	- #### Binary search tree
+		- It is a [[Data structures, algorithms, and big O#Binary tree|binary tree]] in which the nodes are **ordered** according to their value: ALL left descendants <= node < ALL right descendants.
+
+		![[binary search tree.png]]
+		
+		- Storing data in a BST has the advantage of receiving items in __O log(n)__ time, but adding and removing them slower compared to arrays.
 
 ## Algorithms
 - ### Given an array of integers going from 1 to 100 (both inclusive) there is a duplicated entry. How to find it?
@@ -156,10 +178,48 @@
 		return -1;
 	}
 	```
+	
+- ### Graph traversal algorithms
+	- #### Depth-first search^[https://www.programiz.com/dsa/graph-dfs]
+		```java
+		Set visitedNodes;
+		Stack stack;
+
+		stack.push(initial node);
+
+		while stack has nodes in it:
+			put the top of the stack to visitedNodes;
+			if the adjacent nodes isn't in visitedNotes:
+				push the adjacent nodes to the stack;
+
+		```
+	- #### Breadth-first search
+		```java
+		Set visitedNodes;
+		Queue queue;
+
+		queue.add(initial node);
+
+		while queue has nodes in it:
+			put the end of the queue to visitedNodes;
+			if the adjacent nodes isn't in visitedNotes:
+				put the adjacent nodes to the start of the queue;
+		```
+		
+- ### Quicksort
+	QuickSort is a _"divide and conquer"_ sorting algorithm.
+
+	1. Choose an element randomly from the array, called the _pivot_ element.
+	2. Start two pointers from either side of the array.
+	3. Compare the value of the elements the pointers point at to the pivot:
+		- If the __left__ element is bigger or equal to the pivot element, stop the pointer at that element, if it is smaller, continue.
+		- Same with the __right__ element, only we stop the right pointer at an element if it is bigger or equal to the pivot.
+	4. If both pointers stopped (and they didnt reach each other), we swap the elements they point at.
+	5. Repeat this until the pointers reach other.
+	6. Partitioning the array where the left pointer stopped, we repeat this progress on the parts until we can't divide them further.
 
 ## Big O complexity
-- ### What is the Big O time complexity of the common operations in an ArrayList, LinkedList, HashMap? And of a bubble sort, quicksort, finding items in a Binary Search tree?
-	Link: https://www.bigocheatsheet.com/
+- ### What is the Big O time complexity of the common operations in an ArrayList, LinkedList, HashMap? And of a bubble sort, quicksort, finding items in a Binary Search tree?^[https://www.bigocheatsheet.com/]
 
 	#### ArrayList:
 	- adding/removing from the beginning (or near the beginning): the whole list needs to be "re-indexed", so O(n)
